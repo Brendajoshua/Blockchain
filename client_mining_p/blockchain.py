@@ -125,7 +125,7 @@ def mine():
     block_string = json.dumps(blockchain.last_block, sort_keys=True)
     is_valid = blockchain.valid_proof(block_string, data['proof'])
 
-    if is_valid
+    if is_valid:
         # Forge the new Block by adding it to the chain with the proof
         previous_hash = blockchain.hash(blockchain.last_block)
         new_block = blockchain.new_block(data['proof'], previous_hash)
