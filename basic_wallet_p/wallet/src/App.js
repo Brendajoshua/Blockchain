@@ -1,24 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect } from 'react';
 import './App.css';
+import IdForm from './components/IdForm';
+import { useLocalStorage } from './hooks/useLocalStorage';
 
 function App() {
-  return (
+  const [id, setId] = useLocalStorage('id', null)
+
+  const handleId = (new_id) => {
+    setId(new_id)
+  }
+
+  return id === null ? (
+    <IdForm handleId={handleId} />
+  ) : (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      what's up
     </div>
   );
 }
